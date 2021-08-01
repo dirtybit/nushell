@@ -127,9 +127,7 @@ impl NuConfig {
         let mut result = IndexMap::new();
         if let Some(variables) = self.env() {
             for var in variables.row_entries() {
-                if let Ok(value) = var.1.as_string() {
-                    result.insert(var.0.clone(), value);
-                }
+                result.insert(var.0.clone(), var.1.convert_to_string());
             }
         }
         result
